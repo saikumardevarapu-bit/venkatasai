@@ -142,11 +142,31 @@ header nav{flex:1}
 .btn{position:relative;z-index:2}
 .btn.ghost{border:1px solid currentColor}
 </style>
+
+<style>
+:root{--bg:#070b14;--bg2:#0b1220;--card:#101a2b;--text:#f4f7ff;--muted:#a8b4c8;--line:rgba(148,163,184,.16);--accent:#4f8cff;--accent2:#8b5cf6;--accent3:#22d3ee}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 85% 5%,rgba(79,140,255,.16),transparent 28%),radial-gradient(circle at 8% 42%,rgba(139,92,246,.10),transparent 25%),linear-gradient(135deg,var(--bg),var(--bg2));color:var(--text)}
+header{background:rgba(7,11,20,.84)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(18px)}
+nav a{color:#dce6f8}nav a:hover{color:#7eb0ff}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 75% 30%,rgba(34,211,238,.10),transparent 25%),radial-gradient(circle at 25% 80%,rgba(79,140,255,.12),transparent 28%)}
+.hero-panel{background:linear-gradient(145deg,rgba(17,28,47,.96),rgba(9,17,30,.96))!important;border:1px solid rgba(126,166,255,.20)!important;box-shadow:0 25px 70px rgba(0,0,0,.35)!important}
+.btn{box-shadow:0 10px 25px rgba(0,0,0,.20);transition:transform .25s ease,box-shadow .25s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(79,140,255,.22)}.btn.ghost{border-color:rgba(126,166,255,.35)}
+.section{background:transparent!important}.section.dark{background:linear-gradient(135deg,#080e1b,#10152a,#071923)!important}
+.projects-grid article,.stat,.career-path>div{background:linear-gradient(145deg,rgba(17,27,45,.98),rgba(11,19,33,.98))!important;border:1px solid rgba(126,166,255,.15)!important;box-shadow:0 15px 40px rgba(0,0,0,.20)!important}
+.projects-grid article:hover,.career-path>div:hover,.stat:hover{border-color:rgba(79,140,255,.45)!important;box-shadow:0 22px 55px rgba(0,0,0,.34),0 0 25px rgba(79,140,255,.08)!important}
+.projects-grid article::before{background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3))!important}
+.projects-grid article span{background:linear-gradient(135deg,var(--accent),var(--accent2))!important}
+.stat strong{background:linear-gradient(90deg,#6ea4ff,#a78bfa,#67e8f9)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.stat span,.career-path p{color:var(--muted)!important}
+.career-path>div{border-left-color:var(--accent)!important}
+.chips span{background:rgba(79,140,255,.09)!important;border:1px solid rgba(126,166,255,.18)!important;color:#dbe7ff!important}
+footer{background:#050911!important;border-top:1px solid var(--line)}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap navin"><a class="logo" href="#home">VSK<span>.</span></a><button class="menu">☰</button>
-<nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#career-path">Career</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav></div><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">☾</button>
-</header>
+<nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#career-path">Career</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav></div></header>
 
 <section id="home" class="hero"><div class="wrap hero-grid">
 <div><p class="eyebrow">SYSTEMS & IT • ITS • PROJECT DELIVERY</p>
@@ -266,24 +286,5 @@ header nav{flex:1}
 <footer><div class="wrap"><span>© 2026 Venkata Sai Kumar</span><span>Systems & IT • ITS • Project Delivery</span></div></footer>
 <script>const b=document.querySelector('.menu'),n=document.querySelector('nav');b.onclick=()=>n.classList.toggle('open');</script>
 
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const btn=document.getElementById('themeToggle');
-  const saved=localStorage.getItem('vsk-theme');
-  if(saved==='dark') document.body.classList.add('dark-mode');
-  const sync=()=>{if(btn)btn.textContent=document.body.classList.contains('dark-mode')?'☀':'☾'};
-  sync();
-  btn?.addEventListener('click',()=>{
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('vsk-theme',document.body.classList.contains('dark-mode')?'dark':'light');
-    sync();
-  });
-  const items=document.querySelectorAll('article,.stat,.career-path>div');
-  items.forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .55s ease, transform .55s ease, box-shadow .28s ease';el.style.transitionDelay=(i%6)*60+'ms';});
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target);}});
-  },{threshold:.12});
-  items.forEach(el=>io.observe(el));
-});
-</script>
+
 </body></html>
