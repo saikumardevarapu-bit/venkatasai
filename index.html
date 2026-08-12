@@ -454,9 +454,8 @@ function verifyCVPassword(event, link){
   async function render(){
     const {data,error}=await client
       .from('endorsements')
-      .select('name,area,rating,comment,created_at')
-      .eq('approved',true)
-      .order('created_at',{ascending:false});
+      .select('id,name,area,rating,comment')
+      .order('id',{ascending:false});
 
     if(error){
       list.innerHTML='<div class="empty-endorsements">Unable to load endorsements right now. Please try again later.</div>';
@@ -520,7 +519,8 @@ function verifyCVPassword(event, link){
     const {error}=await client.from('endorsements').insert(entry);
 
     if(error){
-      alert('Your endorsement could not be submitted. Please try again.');
+      console.error('Supabase endorsement insert error:', error);
+      alert('Your endorsement could not be submitted.\n\nSupabase: ' + (error.message || 'Unknown database error'));
     }else{
       form.reset();
       await render();
