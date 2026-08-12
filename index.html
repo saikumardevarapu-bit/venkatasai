@@ -391,7 +391,7 @@ header nav a{white-space:nowrap}
           <textarea id="endorserComment" maxlength="400" rows="4" placeholder="Write a short professional comment..." required></textarea>
         </label>
         <button class="btn primary" type="submit">Submit Endorsement</button>
-        <p class="form-note">Please keep comments professional and relevant to your working experience.</p>
+        <p class="form-note">Please keep comments professional and relevant to your working experience. Submissions can be moderated before public display.</p>
       </form>
     </div>
 
@@ -420,64 +420,126 @@ function verifyCVPassword(event, link){
 }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
-  const key='venkata_endorsements_v1';
+  /*
+   * LIVE SHARED ENDORSEMENTS
+   * Replace the two placeholders below with your Supabase project values.
+   * Never put a Supabase service-role/secret key here.
+   */
+  const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL';
+  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_PUBLISHABLE_KEY';
+
   const form=document.getElementById('endorsementForm');
   const list=document.getElementById('endorsementList');
   if(!form||!list)return;
 
-  function getData(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return[]}}
-  function saveData(data){localStorage.setItem(key,JSON.stringify(data))}
-  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+  const ready = SUPABASE_URL.startsWith('https://') &&
+                !SUPABASE_URL.includes('YOUR_') &&
+                !SUPABASE_ANON_KEY.includes('YOUR_');
+
+  if(!ready){
+    list.innerHTML='<div class="empty-endorsements">Endorsements are ready for live sharing. Add your Supabase Project URL and publishable key in this file to connect the public database.</div>';
+    return;
+  }
+
+  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  }
   function stars(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
 
-  function render(){
-    const data=getData();
-    const count=data.length;
-    const avg=count?data.reduce((a,x)=>a+Number(x.rating),0)/count:0;
+  async function render(){
+    const {data,error}=await client
+      .from('endorsements')
+      .select('name,area,rating,comment,created_at')
+      .eq('approved',true)
+      .order('created_at',{ascending:false});
+
+    if(error){
+      list.innerHTML='<div class="empty-endorsements">Unable to load endorsements right now. Please try again later.</div>';
+      return;
+    }
+
+    const rows=data||[];
+    const count=rows.length;
+    const avg=count?rows.reduce((a,x)=>a+Number(x.rating),0)/count:0;
+
     document.getElementById('ratingCount').textContent=count;
     document.getElementById('avgRating').textContent=avg.toFixed(1);
     document.getElementById('summaryStars').textContent=stars(Math.round(avg));
+
     const bars=document.getElementById('ratingBars');
     bars.innerHTML='';
     for(let r=5;r>=1;r--){
-      const n=data.filter(x=>Number(x.rating)===r).length;
+      const n=rows.filter(x=>Number(x.rating)===r).length;
       const pct=count?Math.round(n/count*100):0;
       bars.innerHTML+=`<div class="rating-bar"><span>${r}</span><div class="rating-track"><div class="rating-fill" style="width:${pct}%"></div></div><span>${n}</span></div>`;
     }
+
     if(!count){
       list.innerHTML='<div class="empty-endorsements">No endorsements yet. Be the first to share a professional rating.</div>';
       return;
     }
-    list.innerHTML=data.slice().reverse().map(x=>`
-      <article class="endorsement-card">
+
+    list.innerHTML=rows.map(x=>{
+      const date=x.created_at?new Date(x.created_at).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}):'';
+      return `<article class="endorsement-card">
         <div class="endorsement-card-top">
-          <div><h3>${esc(x.name)}</h3><div class="endorsement-meta">${esc(x.area)} • ${esc(x.date)}</div></div>
+          <div><h3>${esc(x.name)}</h3><div class="endorsement-meta">${esc(x.area)} • ${esc(date)}</div></div>
           <div class="stars">${stars(Number(x.rating))}</div>
         </div>
         <p class="endorsement-comment">${esc(x.comment)}</p>
-      </article>`).join('');
+      </article>`;
+    }).join('');
   }
 
-  form.addEventListener('submit',function(e){
+  form.addEventListener('submit',async function(e){
     e.preventDefault();
+
+    const button=form.querySelector('button[type="submit"]');
+    const original=button.textContent;
+    button.disabled=true;
+    button.textContent='Submitting...';
+
     const entry={
       name:document.getElementById('endorserName').value.trim(),
       area:document.getElementById('endorsementArea').value,
       rating:Number(document.getElementById('endorsementRating').value),
-      comment:document.getElementById('endorserComment').value.trim(),
-      date:new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})
+      comment:document.getElementById('endorserComment').value.trim()
     };
-    if(!entry.name||!entry.area||!entry.rating||!entry.comment)return;
-    const data=getData();
-    data.push(entry);
-    saveData(data);
-    form.reset();
-    render();
-    document.getElementById('endorsementList').scrollIntoView({behavior:'smooth',block:'start'});
+
+    if(!entry.name||!entry.area||!entry.rating||!entry.comment){
+      button.disabled=false;
+      button.textContent=original;
+      return;
+    }
+
+    const {error}=await client.from('endorsements').insert(entry);
+
+    if(error){
+      alert('Your endorsement could not be submitted. Please try again.');
+    }else{
+      form.reset();
+      await render();
+      document.getElementById('endorsementList').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    button.disabled=false;
+    button.textContent=original;
   });
+
   render();
+
+  // Live updates: everyone with the page open sees approved new endorsements.
+  client.channel('endorsements-live')
+    .on('postgres_changes',
+      {event:'*',schema:'public',table:'endorsements',filter:'approved=eq.true'},
+      () => render()
+    )
+    .subscribe();
 })();
 </script>
 </body></html>
