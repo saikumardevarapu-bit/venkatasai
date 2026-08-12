@@ -212,6 +212,33 @@ header nav a{white-space:nowrap}
 .empty-endorsements{grid-column:1/-1;padding:25px;text-align:center;color:#8796ad;border:1px dashed rgba(126,166,255,.18);border-radius:16px}
 @media(max-width:800px){.endorsement-layout,.endorsement-list{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 </style>
+
+<style>
+/* Executive Portfolio Upgrade */
+:root{--exec-glow:rgba(59,130,246,.22);--exec-border:rgba(148,163,184,.18)}
+html{scroll-behavior:smooth}body{overflow-x:hidden}section{scroll-margin-top:90px}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:-1}
+.hero:before{width:360px;height:360px;right:-120px;top:-120px;background:radial-gradient(circle,var(--exec-glow),transparent 68%)}
+.hero:after{width:280px;height:280px;left:-130px;bottom:-130px;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 68%)}
+.exec-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--exec-border);border-radius:999px;background:rgba(255,255,255,.05);backdrop-filter:blur(12px);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#bcd0f7}
+.exec-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 14px #38bdf8}
+.hero h1{letter-spacing:-.045em}.hero .lead{max-width:760px;line-height:1.75}
+.executive-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:28px 0 8px}
+.executive-stat{padding:20px;border:1px solid var(--exec-border);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.executive-stat:hover{transform:translateY(-5px);border-color:rgba(96,165,250,.4);box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.executive-stat strong{display:block;font-size:2rem;line-height:1;font-weight:900}.executive-stat span{display:block;margin-top:8px;color:#aebed7;font-size:.86rem}
+.leadership-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.leadership-card{padding:24px;border-radius:20px;border:1px solid var(--exec-border);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:transform .25s ease,border-color .25s ease}
+.leadership-card:hover{transform:translateY(-6px);border-color:rgba(96,165,250,.4)}
+.leadership-card .icon{font-size:1.5rem;margin-bottom:14px}.leadership-card h3{margin:0 0 8px}.leadership-card p{margin:0;color:#aebed7;line-height:1.65;font-size:.92rem}
+.tech-cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.tech-cloud span{padding:10px 14px;border-radius:999px;border:1px solid var(--exec-border);background:rgba(255,255,255,.045);color:#dce8ff;font-weight:700;font-size:.86rem;transition:.2s ease}.tech-cloud span:hover{transform:translateY(-2px);border-color:rgba(96,165,250,.5);background:rgba(37,99,235,.12)}
+.executive-cta{margin-top:28px;padding:26px;border-radius:22px;border:1px solid rgba(96,165,250,.22);background:linear-gradient(120deg,rgba(37,99,235,.12),rgba(124,58,237,.10));display:flex;align-items:center;justify-content:space-between;gap:20px}
+.executive-cta h3{margin:0 0 6px}.executive-cta p{margin:0;color:#aebed7}.executive-cta .actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.executive-stats,.leadership-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.executive-stats,.leadership-grid{grid-template-columns:1fr}.executive-cta{flex-direction:column;align-items:flex-start}}
+</style>
+
 </head>
 <body>
 <header class="nav"><div class="wrap navin"><a class="logo" href="#home">Venkata Profile<span>.</span></a><button class="menu">☰</button>
@@ -238,6 +265,19 @@ header nav a{white-space:nowrap}
 <ul><li>Enterprise IT Infrastructure</li><li>Toll Management Systems</li><li>ATMS / TCMS / ITMS</li><li>Cybersecurity & Compliance</li><li>Digital Transformation</li></ul>
 </div>
 </div></section>
+<section class="section dark" id="leadership-at-a-glance">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Leadership at a Glance</span><h2>Scale, delivery and technology leadership</h2><p>End-to-end responsibility across teams, tolling operations and intelligent transportation projects.</p></div>
+<div class="executive-stats">
+<div class="executive-stat"><strong>35+</strong><span>Technical Support Team Members Led</span></div>
+<div class="executive-stat"><strong>15+</strong><span>Toll Plazas Maintained</span></div>
+<div class="executive-stat"><strong>7+</strong><span>End-to-End Projects Executed</span></div>
+<div class="executive-stat"><strong>6+</strong><span>ATMS Projects Managed End-to-End</span></div>
+</div>
+<div class="executive-cta"><div><h3>From RFP to operational delivery</h3><p>RFPs, solutioning, costing, BOQs, contracts, stakeholder coordination and execution.</p></div><div class="actions"><a class="btn" href="#projects">Explore Projects</a><a class="btn" href="#endorsements">View Endorsements</a></div></div>
+</div>
+</section>
+
 
 <section id="about" class="section"><div class="wrap split"><div><p class="eyebrow">PROFILE</p><h2>Bridging technology, infrastructure and project delivery.</h2></div>
 <div class="copy"><p>Venkata Sai Kumar is an Associate General Manager – Systems & IT with 12 years of experience combining IT and ITS technologies. His experience covers project management, project delivery, solution design, implementation, operations and maintenance of IT infrastructure, Toll Automation, ATMS, IoT and ITMS systems.</p>
@@ -347,6 +387,19 @@ header nav a{white-space:nowrap}
 </div></div></section>
 
 
+
+<section class="section" id="technology-leadership">
+<div class="container">
+<div class="section-head"><span class="eyebrow">Technology Leadership</span><h2>ITS platforms, tolling and smart mobility</h2><p>A practical leadership profile spanning technology, delivery, field operations and stakeholder management.</p></div>
+<div class="leadership-grid">
+<article class="leadership-card"><div class="icon">🚦</div><h3>ATMS</h3><p>End-to-end project management and execution across intelligent transportation deployments.</p></article>
+<article class="leadership-card"><div class="icon">🛣️</div><h3>MLFF</h3><p>Solutioning, implementation leadership, integration and operational readiness for free-flow tolling.</p></article>
+<article class="leadership-card"><div class="icon">💳</div><h3>TCMS</h3><p>Toll collection systems, lane applications, central systems, device integration and field delivery.</p></article>
+<article class="leadership-card"><div class="icon">📡</div><h3>ITS Ecosystem</h3><p>VTS, ANPR, RFID, LiDAR, CCTV/PTZ and integrated roadside technology.</p></article>
+</div>
+<div class="tech-cloud"><span>Project Management</span><span>Solutioning</span><span>RFPs / RFQs</span><span>Costing</span><span>BOQs</span><span>Contracts</span><span>Vendor Management</span><span>Stakeholder Management</span><span>Field Operations</span><span>System Integration</span></div>
+</div>
+</section>
 <section id="endorsements" class="section dark">
   <div class="wrap">
     <p class="eyebrow">PROFESSIONAL ENDORSEMENTS</p>
