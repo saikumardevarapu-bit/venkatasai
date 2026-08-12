@@ -212,93 +212,6 @@ header nav a{white-space:nowrap}
 .empty-endorsements{grid-column:1/-1;padding:25px;text-align:center;color:#8796ad;border:1px dashed rgba(126,166,255,.18);border-radius:16px}
 @media(max-width:800px){.endorsement-layout,.endorsement-list{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 </style>
-
-<style id="executive-upgrade">
-:root{
-  --premium-line:rgba(148,163,184,.18);
-  --premium-glow:rgba(59,130,246,.18);
-}
-html{scroll-behavior:smooth}
-section{scroll-margin-top:88px}
-.hero{position:relative;overflow:hidden;isolation:isolate}
-.hero:before{
-  content:"";position:absolute;width:520px;height:520px;right:-230px;top:-260px;
-  background:radial-gradient(circle,var(--premium-glow),transparent 68%);
-  pointer-events:none;z-index:-1
-}
-.hero:after{
-  content:"";position:absolute;width:340px;height:340px;left:-180px;bottom:-220px;
-  background:radial-gradient(circle,rgba(124,58,237,.12),transparent 68%);
-  pointer-events:none;z-index:-1
-}
-.hero .eyebrow{letter-spacing:.14em}
-.hero h1{letter-spacing:-.045em}
-.hero .lead{max-width:760px;line-height:1.75}
-.hero-panel{
-  border:1px solid var(--premium-line)!important;
-  box-shadow:0 24px 70px rgba(0,0,0,.22);
-  backdrop-filter:blur(14px);
-}
-.premium-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 13px;margin-bottom:18px;border-radius:999px;
-  border:1px solid var(--premium-line);background:rgba(255,255,255,.045);
-  color:#cbd8ef;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase
-}
-.premium-badge i{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 14px #38bdf8}
-.projects-grid article{
-  position:relative;overflow:hidden;border:1px solid var(--premium-line);
-  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease
-}
-.projects-grid article:after{
-  content:"";position:absolute;right:-45px;top:-55px;width:150px;height:150px;border-radius:50%;
-  background:radial-gradient(circle,rgba(59,130,246,.12),transparent 68%);pointer-events:none
-}
-.projects-grid article:hover{
-  transform:translateY(-7px);border-color:rgba(96,165,250,.42);
-  box-shadow:0 18px 45px rgba(0,0,0,.18)
-}
-.projects-grid article span{
-  display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;
-  border-radius:10px;background:rgba(59,130,246,.1);border:1px solid rgba(96,165,250,.2);
-  font-weight:800
-}
-.project-tag{
-  display:inline-block;margin-top:16px;margin-right:7px;padding:6px 9px;border-radius:999px;
-  border:1px solid var(--premium-line);font-size:.68rem;color:#aebed7
-}
-.career-path{
-  position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;
-  margin-top:32px
-}
-.career-path:before{
-  content:"";position:absolute;left:8%;right:8%;top:18px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(96,165,250,.45),rgba(124,58,237,.45),transparent)
-}
-.career-path>div{position:relative;text-align:center;padding:0 10px}
-.career-path>div>span{
-  position:relative;z-index:2;display:inline-flex;width:36px;height:36px;
-  align-items:center;justify-content:center;border-radius:50%;
-  border:1px solid rgba(96,165,250,.35);background:#0b1220;
-  color:#dbeafe;font-weight:800;box-shadow:0 0 0 6px rgba(11,18,32,.7)
-}
-.career-path h3{font-size:.95rem;margin:18px 0 6px}.career-path p{font-size:.8rem;color:#94a3b8;margin:0;line-height:1.5}
-.endorsement-summary{
-  border:1px solid var(--premium-line)!important;
-  box-shadow:0 18px 45px rgba(0,0,0,.16)
-}
-.rating-score strong{font-size:3.4rem!important;letter-spacing:-.05em}
-.rating-bars .bar-row{margin:9px 0}
-.rating-bars .bar-track{height:7px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
-.rating-bars .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#60a5fa,#a78bfa)}
-.endorsement-card{
-  border:1px solid var(--premium-line)!important;
-  transition:transform .22s ease,border-color .22s ease
-}
-.endorsement-card:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.38)!important}
-@media(max-width:900px){.career-path{grid-template-columns:1fr;gap:26px}.career-path:before{left:18px;right:auto;top:18px;bottom:18px;width:1px;height:auto;background:linear-gradient(180deg,rgba(96,165,250,.45),rgba(124,58,237,.35))}.career-path>div{text-align:left;padding-left:62px}.career-path>div>span{position:absolute;left:0;top:0}}
-</style>
-
 </head>
 <body>
 <header class="nav"><div class="wrap navin"><a class="logo" href="#home">Venkata Profile<span>.</span></a><button class="menu">☰</button>
@@ -366,14 +279,14 @@ section{scroll-margin-top:88px}
 <h2>Technology Leadership & Project Management</h2>
 <p class="section-intro">End-to-end technology leadership across Intelligent Transport Systems, tolling and enterprise technology projects.</p>
 <div class="grid projects-grid">
-<article><span>01</span><h3>MLFF — Multi-Lane Free Flow</h3><p>Technology leadership and end-to-end project management for MLFF initiatives, covering solution planning, system integration, deployment, testing, commissioning, operational readiness and stakeholder coordination.</p><div class="project-tags"><span class="project-tag">Solutioning</span><span class="project-tag">Integration</span><span class="project-tag">Deployment</span></div></article>
-<article><span>02</span><h3>ATMS — Advanced Traffic Management Systems</h3><p>Leads ATMS technology delivery covering system integration, field technology, deployment, testing, commissioning, operations readiness and coordination with clients, vendors and project stakeholders.</p><div class="project-tags"><span class="project-tag">E2E PM</span><span class="project-tag">Execution</span><span class="project-tag">Operations</span></div></article>
-<article><span>03</span><h3>TCMS — Toll Collection Management System</h3><p>Leadership of TCMS implementation and delivery, including lane and central application integration, device integration, testing, commissioning, operational readiness and production support.</p><div class="project-tags"><span class="project-tag">Lane + Central</span><span class="project-tag">Integration</span><span class="project-tag">Commissioning</span></div></article>
-<article><span>04</span><h3>End-to-End Project Leadership</h3><p>Leads projects from requirement analysis and solution planning through execution, integration, FAT, testing, commissioning, SAT, handover and operational support, with ownership of scope, schedule, risks and quality.</p><div class="project-tags"><span class="project-tag">Scope</span><span class="project-tag">Schedule</span><span class="project-tag">Risk</span><span class="project-tag">Quality</span></div></article>
-<article><span>05</span><h3>System Integration & Technology Delivery</h3><p>Coordinates cross-functional technical teams, system integrators, vendors and clients to manage technical dependencies, interfaces, deployment activities, issue resolution and successful project delivery.</p><div class="project-tags"><span class="project-tag">Teams</span><span class="project-tag">Vendors</span><span class="project-tag">Interfaces</span></div></article>
-<article><span>06</span><h3>Stakeholder & Vendor Leadership</h3><p>Drives technical discussions, project reviews, vendor coordination, stakeholder communication and resolution of implementation challenges to maintain delivery timelines and project objectives.</p><div class="project-tags"><span class="project-tag">Clients</span><span class="project-tag">Vendors</span><span class="project-tag">Delivery</span></div></article>
-<article><span>07</span><h3>Testing, Commissioning & Operational Readiness</h3><p>Provides leadership across integration testing, FAT/WIR/SAT, lane-level validation, central application readiness, commissioning, defect closure and transition to operations.</p><div class="project-tags"><span class="project-tag">FAT / WIR / SAT</span><span class="project-tag">Defect Closure</span><span class="project-tag">Handover</span></div></article>
-<article><span>08</span><h3>Technology Strategy & Digital Transformation</h3><p>Provides technology recommendations to senior management and drives automation, process improvement, infrastructure modernization, cybersecurity and technology evaluation initiatives.</p><div class="project-tags"><span class="project-tag">Automation</span><span class="project-tag">Modernization</span><span class="project-tag">Technology Evaluation</span></div></article>
+<article><span>01</span><h3>MLFF — Multi-Lane Free Flow</h3><p>Technology leadership and end-to-end project management for MLFF initiatives, covering solution planning, system integration, deployment, testing, commissioning, operational readiness and stakeholder coordination.</p></article>
+<article><span>02</span><h3>ATMS — Advanced Traffic Management Systems</h3><p>Leads ATMS technology delivery covering system integration, field technology, deployment, testing, commissioning, operations readiness and coordination with clients, vendors and project stakeholders.</p></article>
+<article><span>03</span><h3>TCMS — Toll Collection Management System</h3><p>Leadership of TCMS implementation and delivery, including lane and central application integration, device integration, testing, commissioning, operational readiness and production support.</p></article>
+<article><span>04</span><h3>End-to-End Project Leadership</h3><p>Leads projects from requirement analysis and solution planning through execution, integration, FAT, testing, commissioning, SAT, handover and operational support, with ownership of scope, schedule, risks and quality.</p></article>
+<article><span>05</span><h3>System Integration & Technology Delivery</h3><p>Coordinates cross-functional technical teams, system integrators, vendors and clients to manage technical dependencies, interfaces, deployment activities, issue resolution and successful project delivery.</p></article>
+<article><span>06</span><h3>Stakeholder & Vendor Leadership</h3><p>Drives technical discussions, project reviews, vendor coordination, stakeholder communication and resolution of implementation challenges to maintain delivery timelines and project objectives.</p></article>
+<article><span>07</span><h3>Testing, Commissioning & Operational Readiness</h3><p>Provides leadership across integration testing, FAT/WIR/SAT, lane-level validation, central application readiness, commissioning, defect closure and transition to operations.</p></article>
+<article><span>08</span><h3>Technology Strategy & Digital Transformation</h3><p>Provides technology recommendations to senior management and drives automation, process improvement, infrastructure modernization, cybersecurity and technology evaluation initiatives.</p></article>
 </div>
 </div>
 </section>
@@ -381,7 +294,7 @@ section{scroll-margin-top:88px}
 <section id="achievements" class="section dark">
 <div class="wrap">
 <p class="eyebrow">KEY ACHIEVEMENTS</p>
-<h2>Key Delivery Highlights</h2>
+<h2>Leadership at a Glance</h2>
 <p class="section-intro">A concise view of the leadership experience and delivery focus reflected in the professional profile.</p>
 <div class="stats">
 <div class="stat"><strong>12+</strong><span>Years of IT & ITS Experience</span></div>
@@ -438,7 +351,7 @@ section{scroll-margin-top:88px}
   <div class="wrap">
     <p class="eyebrow">PROFESSIONAL ENDORSEMENTS</p>
     <h2>Rate the Endorsement</h2>
-    <p class="section-intro">Share a professional rating and a short comment about Venkata's project leadership, technology delivery or collaboration.</p><p class="section-intro" style="margin-top:-8px">Live ratings are shared across the website and update automatically when new endorsements are submitted.</p>
+    <p class="section-intro">Share a professional rating and a short comment about Venkata's project leadership, technology delivery or collaboration.</p>
 
     <div class="endorsement-layout">
       <div class="endorsement-summary">
