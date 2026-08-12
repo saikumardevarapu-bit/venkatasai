@@ -391,7 +391,7 @@ header nav a{white-space:nowrap}
           <textarea id="endorserComment" maxlength="400" rows="4" placeholder="Write a short professional comment..." required></textarea>
         </label>
         <button class="btn primary" type="submit">Submit Endorsement</button>
-        <p class="form-note">Please keep comments professional and relevant to your working experience. Submissions can be moderated before public display.</p>
+        <p class="form-note">Please keep comments professional and relevant to your working experience. Submitted endorsements are published live.</p>
       </form>
     </div>
 
@@ -440,7 +440,7 @@ function verifyCVPassword(event, link){
                 !SUPABASE_ANON_KEY.includes('YOUR_');
 
   if(!ready){
-    list.innerHTML='<div class="empty-endorsements">Endorsements are ready for live sharing. Add your Supabase Project URL and publishable key in this file to connect the public database.</div>';
+    list.innerHTML='<div class="empty-endorsements">Live endorsements are ready. Add your Supabase Project URL and publishable key in this file to connect the public database.</div>';
     return;
   }
 
@@ -485,10 +485,10 @@ function verifyCVPassword(event, link){
     }
 
     list.innerHTML=rows.map(x=>{
-      const date=x.created_at?new Date(x.created_at).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}):'';
+      const date='';
       return `<article class="endorsement-card">
         <div class="endorsement-card-top">
-          <div><h3>${esc(x.name)}</h3><div class="endorsement-meta">${esc(x.area)} • ${esc(date)}</div></div>
+          <div><h3>${esc(x.name)}</h3><div class="endorsement-meta">${esc(x.area)}</div></div>
           <div class="stars">${stars(Number(x.rating))}</div>
         </div>
         <p class="endorsement-comment">${esc(x.comment)}</p>
@@ -533,10 +533,10 @@ function verifyCVPassword(event, link){
 
   render();
 
-  // Live updates: everyone with the page open sees approved new endorsements.
+  // Live updates: everyone with the page open sees new/changed endorsements.
   client.channel('endorsements-live')
     .on('postgres_changes',
-      {event:'*',schema:'public',table:'endorsements',filter:'approved=eq.true'},
+      {event:'*',schema:'public',table:'endorsements'},
       () => render()
     )
     .subscribe();
