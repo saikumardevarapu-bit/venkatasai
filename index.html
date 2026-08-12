@@ -175,10 +175,47 @@ header nav a{white-space:nowrap}
 <style>
 .btn.profile-download{background:linear-gradient(135deg,#4f8cff,#8b5cf6);color:#fff!important;border:0}
 </style>
+
+<style>
+.endorsement-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px;margin-top:30px}
+.endorsement-summary,.endorsement-form,.endorsement-card{
+  background:linear-gradient(145deg,rgba(17,27,45,.98),rgba(11,19,33,.98));
+  border:1px solid rgba(126,166,255,.15);border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.20)
+}
+.endorsement-summary{padding:28px;text-align:center}
+.rating-score strong{font-size:3.3rem;color:#f4f7ff}
+.rating-score span{color:#a8b4c8}
+.stars{font-size:1.35rem;letter-spacing:4px;color:#f5b942;margin:7px 0}
+.rating-bars{margin-top:20px;text-align:left}
+.rating-bar{display:grid;grid-template-columns:20px 1fr 30px;gap:9px;align-items:center;margin:8px 0;color:#a8b4c8;font-size:.82rem}
+.rating-track{height:7px;border-radius:99px;background:#1d293d;overflow:hidden}
+.rating-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#4f8cff,#8b5cf6)}
+.endorsement-form{padding:26px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.endorsement-form label{display:block;color:#dbe7ff;font-size:.88rem;margin-bottom:15px}
+.endorsement-form input,.endorsement-form textarea,.endorsement-form select{
+  width:100%;margin-top:7px;padding:12px 13px;border-radius:10px;
+  border:1px solid rgba(126,166,255,.2);background:#0b1424;color:#eef3ff;
+  font:inherit;box-sizing:border-box
+}
+.endorsement-form textarea{resize:vertical}
+.endorsement-form option{background:#0b1424;color:#fff}
+.form-note{font-size:.76rem;color:#8998ae;margin-top:10px}
+.endorsement-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+.endorsement-card{padding:20px}
+.endorsement-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.endorsement-card h3{margin:0;font-size:1rem}
+.endorsement-meta{font-size:.76rem;color:#8291a7;margin-top:4px}
+.endorsement-card .stars{font-size:1rem;letter-spacing:2px;margin:0}
+.endorsement-comment{color:#c5d0e1;line-height:1.6;margin:14px 0 0;font-size:.9rem}
+.empty-endorsements{grid-column:1/-1;padding:25px;text-align:center;color:#8796ad;border:1px dashed rgba(126,166,255,.18);border-radius:16px}
+@media(max-width:800px){.endorsement-layout,.endorsement-list{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="wrap navin"><a class="logo" href="#home">Venkata Profile<span>.</span></a><button class="menu">☰</button>
-<nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#career-path">Career</a><a href="#commercial-leadership">Leadership</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav></div></header>
+<nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#career-path">Career</a><a href="#commercial-leadership">Leadership</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#endorsements">Endorsements</a><a href="#contact">Contact</a></nav></div></header>
 
 <section id="home" class="hero"><div class="wrap hero-grid">
 <div><p class="eyebrow">SYSTEMS & IT • ITS • PROJECT DELIVERY</p>
@@ -186,8 +223,8 @@ header nav a{white-space:nowrap}
 <p class="lead">Technology & Project Management Leader with 12 years of experience across IT and Intelligent Transport Systems, project management, solution design, implementation, operations and maintenance.</p>
 <div class="buttons">
 <a class="btn" href="#experience">Explore Experience</a>
-<a class="btn ghost" href="Venkata_Sai_Kumar_Resume.pdf" target="_blank" rel="noopener">Download CV</a>
-<a class="btn ghost" href="https://www.linkedin.com/in/dvsk12258/" target="_blank" rel="noopener">LinkedIn</a> <a class="btn primary" href="Venkata_Profile.pdf" download>Download Profile</a>
+<a class="btn ghost" href="Venkata_Sai_Kumar_Resume.pdf" download onclick="return verifyCVPassword(event, this)">Download CV</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/dvsk12258/" target="_blank" rel="noopener">LinkedIn</a> <a class="btn primary" href="Venkata_Profile.pdf" download onclick="return verifyCVPassword(event, this)">Download Profile</a>
 <a class="btn ghost" href="#contact">Connect</a>
 </div>
 <div class="metrics"><div><b>12</b><span>Years Experience</span></div><div><b>ITS</b><span>Core Domain</span></div><div><b>AGM</b><span>Systems & IT</span></div></div>
@@ -309,9 +346,138 @@ header nav a{white-space:nowrap}
 <div>Certified in Cybersecurity (CC)<small>ISC2</small></div><div>Certified Associate CISO<small>CDAC & CERT-In</small></div><div>ITIL V4 Foundation<small>Simplilearn</small></div><div>Linux 7 & 8<small>I Gurkul</small></div><div>Project Management<small>LinkedIn</small></div><div>Cisco Packet Tracer<small>Cisco</small></div><div>Career Edge – Soft & Hard Skills<small>TCS</small></div>
 </div></div></section>
 
+
+<section id="endorsements" class="section dark">
+  <div class="wrap">
+    <p class="eyebrow">PROFESSIONAL ENDORSEMENTS</p>
+    <h2>Rate the Endorsement</h2>
+    <p class="section-intro">Share a professional rating and a short comment about Venkata's project leadership, technology delivery or collaboration.</p>
+
+    <div class="endorsement-layout">
+      <div class="endorsement-summary">
+        <div class="rating-score"><strong id="avgRating">0.0</strong><span>/ 5</span></div>
+        <div class="stars" id="summaryStars" aria-label="Average rating">★★★★★</div>
+        <p><strong id="ratingCount">0</strong> professional ratings</p>
+        <div class="rating-bars" id="ratingBars"></div>
+      </div>
+
+      <form class="endorsement-form" id="endorsementForm">
+        <div class="form-row">
+          <label>Rate an area
+            <select id="endorsementArea" required>
+              <option value="">Select area</option>
+              <option>End-to-End Project Management</option>
+              <option>ATMS / ITS Delivery</option>
+              <option>MLFF / TCMS Technology</option>
+              <option>RFP, Solutioning & BOQ</option>
+              <option>Leadership & Stakeholder Management</option>
+            </select>
+          </label>
+          <label>Your rating
+            <select id="endorsementRating" required>
+              <option value="">Rating</option>
+              <option value="5">★★★★★ — Excellent</option>
+              <option value="4">★★★★☆ — Very Good</option>
+              <option value="3">★★★☆☆ — Good</option>
+              <option value="2">★★☆☆☆ — Fair</option>
+              <option value="1">★☆☆☆☆ — Needs Improvement</option>
+            </select>
+          </label>
+        </div>
+        <label>Your name
+          <input id="endorserName" type="text" maxlength="70" placeholder="Your name" required>
+        </label>
+        <label>Comment
+          <textarea id="endorserComment" maxlength="400" rows="4" placeholder="Write a short professional comment..." required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Submit Endorsement</button>
+        <p class="form-note">Please keep comments professional and relevant to your working experience.</p>
+      </form>
+    </div>
+
+    <div class="endorsement-list" id="endorsementList">
+      <div class="empty-endorsements">No endorsements yet. Be the first to share a professional rating.</div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact"><div class="wrap contact-grid"><div><p class="eyebrow">CONTACT</p><h2>Let's connect.</h2><p>For professional opportunities, technology projects and collaboration.</p></div><div class="contact-card"><div><small>EMAIL</small><a href="mailto:saikumardevarapu@gmail.com">saikumardevarapu@gmail.com</a></div><div><small>PHONE</small><a href="tel:+917893804420">+91 7893804420</a></div><div><small>LOCATION</small><span>India</span></div></div></div></section>
 <footer><div class="wrap"><span>© 2026 Venkata Sai Kumar</span><span>Systems & IT • ITS • Project Delivery</span></div></footer>
 <script>const b=document.querySelector('.menu'),n=document.querySelector('nav');b.onclick=()=>n.classList.toggle('open');</script>
 
 
+<script>
+function verifyCVPassword(event, link){
+  event.preventDefault();
+  const password = prompt("Enter the CV/Profile download password:");
+  if(password === "VSK2026"){
+    const a=document.createElement("a");
+    a.href=link.href; a.download=""; document.body.appendChild(a); a.click(); a.remove();
+  } else if(password !== null){
+    alert("Incorrect password.");
+  }
+  return false;
+}
+</script>
+
+<script>
+(function(){
+  const key='venkata_endorsements_v1';
+  const form=document.getElementById('endorsementForm');
+  const list=document.getElementById('endorsementList');
+  if(!form||!list)return;
+
+  function getData(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return[]}}
+  function saveData(data){localStorage.setItem(key,JSON.stringify(data))}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+  function stars(n){return '★'.repeat(n)+'☆'.repeat(5-n)}
+
+  function render(){
+    const data=getData();
+    const count=data.length;
+    const avg=count?data.reduce((a,x)=>a+Number(x.rating),0)/count:0;
+    document.getElementById('ratingCount').textContent=count;
+    document.getElementById('avgRating').textContent=avg.toFixed(1);
+    document.getElementById('summaryStars').textContent=stars(Math.round(avg));
+    const bars=document.getElementById('ratingBars');
+    bars.innerHTML='';
+    for(let r=5;r>=1;r--){
+      const n=data.filter(x=>Number(x.rating)===r).length;
+      const pct=count?Math.round(n/count*100):0;
+      bars.innerHTML+=`<div class="rating-bar"><span>${r}</span><div class="rating-track"><div class="rating-fill" style="width:${pct}%"></div></div><span>${n}</span></div>`;
+    }
+    if(!count){
+      list.innerHTML='<div class="empty-endorsements">No endorsements yet. Be the first to share a professional rating.</div>';
+      return;
+    }
+    list.innerHTML=data.slice().reverse().map(x=>`
+      <article class="endorsement-card">
+        <div class="endorsement-card-top">
+          <div><h3>${esc(x.name)}</h3><div class="endorsement-meta">${esc(x.area)} • ${esc(x.date)}</div></div>
+          <div class="stars">${stars(Number(x.rating))}</div>
+        </div>
+        <p class="endorsement-comment">${esc(x.comment)}</p>
+      </article>`).join('');
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const entry={
+      name:document.getElementById('endorserName').value.trim(),
+      area:document.getElementById('endorsementArea').value,
+      rating:Number(document.getElementById('endorsementRating').value),
+      comment:document.getElementById('endorserComment').value.trim(),
+      date:new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})
+    };
+    if(!entry.name||!entry.area||!entry.rating||!entry.comment)return;
+    const data=getData();
+    data.push(entry);
+    saveData(data);
+    form.reset();
+    render();
+    document.getElementById('endorsementList').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  render();
+})();
+</script>
 </body></html>
