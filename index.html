@@ -212,6 +212,130 @@ header nav a{white-space:nowrap}
 .empty-endorsements{grid-column:1/-1;padding:25px;text-align:center;color:#8796ad;border:1px dashed rgba(126,166,255,.18);border-radius:16px}
 @media(max-width:800px){.endorsement-layout,.endorsement-list{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 </style>
+
+<style id="attached-index-mobile-fix">
+/* =========================================================
+   MOBILE RESPONSIVE UPDATE — applied to the attached index
+   Keeps all existing content, Supabase logic and desktop design.
+   ========================================================= */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0}
+img,svg,video,canvas{max-width:100%;height:auto}
+*,*::before,*::after{box-sizing:border-box}
+
+@media (max-width: 900px){
+  .wrap{width:100%;max-width:100%;padding-left:22px;padding-right:22px}
+
+  /* Header / mobile navigation */
+  header{position:sticky!important;top:0!important;width:100%;padding:10px 0!important;z-index:1000}
+  header .navin{display:flex!important;align-items:center!important;gap:10px!important;position:relative}
+  .logo{font-size:1.05rem!important;white-space:nowrap!important}
+  .menu{display:flex!important;align-items:center;justify-content:center;width:42px;height:42px;flex:0 0 42px;margin-left:auto;border:1px solid rgba(126,166,255,.25);border-radius:12px;background:rgba(17,27,45,.9);color:#eef3ff;font-size:20px;cursor:pointer}
+  header nav{display:none!important;position:absolute!important;left:14px!important;right:14px!important;top:58px!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:3px!important;padding:10px!important;border:1px solid rgba(126,166,255,.18)!important;border-radius:16px!important;background:rgba(7,12,23,.98)!important;box-shadow:0 22px 50px rgba(0,0,0,.45)!important;backdrop-filter:blur(18px)!important;max-height:calc(100vh - 75px);overflow-y:auto!important}
+  header nav.open{display:flex!important}
+  header nav a{display:block!important;width:100%!important;padding:11px 12px!important;border-radius:10px!important;white-space:normal!important;font-size:.9rem!important;line-height:1.2!important}
+  header nav a:hover{background:rgba(79,140,255,.10)!important}
+
+  /* Hero */
+  .hero{width:100%;overflow:hidden}
+  .hero-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .hero h1{font-size:clamp(2.7rem,12vw,4.8rem)!important;line-height:.98!important;overflow-wrap:anywhere}
+  .hero .lead{max-width:100%!important;font-size:1rem!important;line-height:1.7!important}
+  .buttons{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;width:100%!important}
+  .buttons .btn{width:100%!important;min-height:46px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}
+  .metrics{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important;width:100%!important}
+  .metrics>div{min-width:0!important;padding:12px 6px!important}
+  .metrics b{font-size:1.25rem!important}
+  .metrics span{font-size:.7rem!important;line-height:1.25!important}
+  .hero-panel{width:100%!important;max-width:100%!important;padding:20px!important;overflow:hidden!important}
+
+  /* Section headings */
+  .section,.contact{width:100%;overflow:hidden}
+  .section h2,.contact h2{font-size:clamp(1.75rem,8vw,2.7rem)!important;line-height:1.12!important}
+  .section-intro{font-size:.94rem!important;line-height:1.65!important;max-width:100%!important}
+  .eyebrow{font-size:.68rem!important;letter-spacing:.12em!important}
+
+  /* About / contact */
+  .split,.contact-grid{grid-template-columns:1fr!important;gap:24px!important}
+  .split>*,.contact-grid>*{min-width:0!important;width:100%!important}
+  .contact-card{width:100%!important;overflow:hidden!important}
+  .contact-card a,.contact-card span{overflow-wrap:anywhere!important}
+
+  /* Generic cards / grids */
+  .grid,.projects-grid{grid-template-columns:1fr!important;gap:15px!important}
+  .grid>*,.projects-grid article{min-width:0!important;width:100%!important}
+  .projects-grid article{padding:20px!important}
+  .projects-grid article h3{font-size:1.05rem!important;line-height:1.3!important}
+  .projects-grid article p,.projects-grid article li{font-size:.9rem!important;line-height:1.6!important}
+  .chips{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
+  .chips span{font-size:.74rem!important;padding:6px 9px!important;max-width:100%!important}
+
+  /* Stats / leadership */
+  .stats{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  .stat{padding:20px 12px!important;min-width:0!important}
+  .stat strong{font-size:1.65rem!important}
+  .stat span{font-size:.78rem!important;line-height:1.35!important}
+
+  /* Career timeline */
+  .career-path{grid-template-columns:1fr!important;gap:13px!important}
+  .career-path>div{min-width:0!important;padding:19px!important}
+  .career-path h3{font-size:1rem!important}
+  .career-path p{font-size:.84rem!important;line-height:1.55!important}
+
+  /* Experience timeline */
+  .timeline{width:100%!important}
+  .job{grid-template-columns:1fr!important;gap:8px!important;padding:22px 0!important}
+  .job .date{font-size:.7rem!important;letter-spacing:.08em!important}
+  .job h3{font-size:1.05rem!important;line-height:1.35!important}
+  .job h4{font-size:.86rem!important}
+  .job ul{padding-left:19px!important}
+  .job li{font-size:.88rem!important;line-height:1.6!important}
+
+  /* Education / certifications */
+  .edu,.certs{grid-template-columns:1fr!important;gap:14px!important}
+  .edu>*,.certs>*{min-width:0!important;width:100%!important}
+
+  /* Endorsements */
+  .endorsement-layout{grid-template-columns:1fr!important;gap:16px!important}
+  .endorsement-summary,.endorsement-form{padding:20px!important;width:100%!important;min-width:0!important}
+  .rating-score strong{font-size:2.9rem!important}
+  .rating-bars{width:100%!important}
+  .rating-bar{grid-template-columns:18px minmax(0,1fr) 28px!important}
+  .form-row{grid-template-columns:1fr!important;gap:0!important}
+  .endorsement-form input,.endorsement-form select,.endorsement-form textarea{width:100%!important;min-width:0!important}
+  .endorsement-form button{width:100%!important;min-height:46px!important}
+  .endorsement-list{grid-template-columns:1fr!important;gap:12px!important}
+  .endorsement-card{width:100%!important;min-width:0!important;padding:17px!important;overflow:hidden!important}
+  .endorsement-card-top{flex-direction:column!important;align-items:flex-start!important}
+  .endorsement-card .stars{font-size:.95rem!important}
+  .endorsement-comment{font-size:.88rem!important;overflow-wrap:anywhere!important}
+
+  /* Footer */
+  footer .wrap{display:flex!important;flex-direction:column!important;gap:8px!important;text-align:center!important;padding-top:24px!important;padding-bottom:24px!important}
+}
+
+@media (max-width: 520px){
+  .wrap{padding-left:15px;padding-right:15px}
+  header .navin{padding-left:15px!important;padding-right:15px!important}
+  .logo{font-size:.98rem!important}
+  .hero{padding-top:42px!important;padding-bottom:38px!important}
+  .hero h1{font-size:2.65rem!important}
+  .hero .lead{font-size:.92rem!important}
+  .metrics{grid-template-columns:1fr!important;gap:7px!important}
+  .metrics>div{display:flex!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;padding:10px 13px!important}
+  .stats{grid-template-columns:1fr!important}
+  .stat{display:flex!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;gap:12px!important}
+  .stat strong{font-size:1.55rem!important;flex:0 0 auto}
+  .stat span{margin-top:0!important;text-align:right!important}
+  .rating-score strong{font-size:2.6rem!important}
+  .stars{font-size:1.15rem!important}
+}
+
+@media (min-width: 901px){
+  .menu{display:none!important}
+}
+</style>
+
 </head>
 <body>
 <header class="nav"><div class="wrap navin"><a class="logo" href="#home">Venkata Profile<span>.</span></a><button class="menu">☰</button>
